@@ -4,6 +4,10 @@ fun main(args: Array<String>) {
     val triangulo1 = Triangulo(3.0, 3.0, 3.0)
     val triangulo2 = Triangulo(3.0, 3.0, 4.0)
     val triangulo3 = Triangulo(3.0, 4.0, 5.0)
+    println(triangulo1)
+    println(triangulo2)
+    println(triangulo3)
+    println()
     println(triangulo1.esRectangulo())
     println(triangulo2.esRectangulo())
     println(triangulo3.esRectangulo())
@@ -25,7 +29,10 @@ class Triangulo(var lado1: Double, var lado2: Double, var lado3: Double){
             else -> false
         }
     }
+    fun perimetro(): Double {
+        return lado1 + lado2 + lado3
+    }
     override fun toString(): String {
-        return "Triangulo(lado1=$lado1, lado2=$lado2, lado3=$lado3, tipo=${tipo()})"
+        return "Triangulo(lado1=$lado1, lado2=$lado2, lado3=$lado3, tipo=${tipo()}, perímetro=${perimetro()})"
     }
 }
