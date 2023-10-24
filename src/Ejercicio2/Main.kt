@@ -1,42 +1,31 @@
 package Ejercicio2
 
+fun main(args: Array<String>) {
+    val triangulo1 = Triangulo(3.0, 3.0, 3.0)
+    val triangulo2 = Triangulo(3.0, 3.0, 4.0)
+    val triangulo3 = Triangulo(3.0, 4.0, 5.0)
+    println(triangulo1.esRectangulo())
+    println(triangulo2.esRectangulo())
+    println(triangulo3.esRectangulo())
+}
+
 class Triangulo(var lado1: Double, var lado2: Double, var lado3: Double){
-    var perimetro: Double = lado1 + lado2 + lado3
-    var tipo: String = ""
-    var rectangulo: Boolean = false
-
-    init {
-        if(lado1 == lado2 && lado2 == lado3){
-            tipo = "Equilatero"
-        }else if(lado1 == lado2 || lado2 == lado3 || lado1 == lado3){
-            tipo = "Isosceles"
-        }else{
-            tipo = "Escaleno"
+    fun tipo(): String {
+        return when {
+            lado1 == lado2 && lado2 == lado3 -> "Equilatero"
+            lado1 == lado2 || lado2 == lado3 || lado1 == lado3 -> "Isosceles"
+            else -> "Escaleno"
         }
-        rectangulo = esRectangulo()
     }
-
-    fun esRectangulo(): Boolean{
-        var hipotenusa: Double = 0.0
-        var cateto1: Double = 0.0
-        var cateto2: Double = 0.0
-        if(lado1 > lado2 && lado1 > lado3){
-            hipotenusa = lado1
-            cateto1 = lado2
-            cateto2 = lado3
-        }else if(lado2 > lado1 && lado2 > lado3){
-            hipotenusa = lado2
-            cateto1 = lado1
-            cateto2 = lado3
-        }else{
-            hipotenusa = lado3
-            cateto1 = lado1
-            cateto2 = lado2
+    fun esRectangulo(): Boolean {
+        return when {
+            lado1 == Math.sqrt(Math.pow(lado2, 2.0) + Math.pow(lado3, 2.0)) -> true
+            lado2 == Math.sqrt(Math.pow(lado1, 2.0) + Math.pow(lado3, 2.0)) -> true
+            lado3 == Math.sqrt(Math.pow(lado2, 2.0) + Math.pow(lado1, 2.0)) -> true
+            else -> false
         }
-        return (hipotenusa*hipotenusa == cateto1*cateto1 + cateto2*cateto2)
     }
-
     override fun toString(): String {
-        return "Triangulo de lados $lado1, $lado2 y $lado3, de tipo $tipo, con perimetro $perimetro y es rectangulo: $rectangulo"
+        return "Triangulo(lado1=$lado1, lado2=$lado2, lado3=$lado3, tipo=${tipo()})"
     }
 }
