@@ -13,12 +13,12 @@ fun main(){
 
 
 class Triangulo{
-    var hipotenusa: Double
-    var l_lado1: Double
-    var l_lado2: Double
-    var perimetro: Double
-    var tipo: String
-    var esRectangulo: Boolean
+    val hipotenusa: Double
+    val l_lado1: Double
+    val l_lado2: Double
+    val perimetro: Double
+    val tipo: String
+    val esRectangulo: Boolean
 
     constructor(hipotenusa: Double, lado1: Double, lado2: Double){
         this.hipotenusa = hipotenusa
@@ -39,10 +39,10 @@ class Triangulo{
             this.esRectangulo = false
         }
     }
-    fun calculaArea(): Double{
+    private fun calculaArea(): Double{
         return (this.l_lado1 * this.l_lado2) / 2
     }
-    fun calculaAltura(): Double{
+    private fun calculaAltura(): Double{
         return (this.l_lado1 * this.l_lado2) / this.hipotenusa
     }
 
